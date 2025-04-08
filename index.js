@@ -11,21 +11,21 @@ app.use(express.json());
 
 
 app.get("/", async (req, res) => {
-    res.send("EasyFind - Backend project Working Fine");
+    res.send("connectMe - Backend project Working Fine");
 });
 //  Api for users
-app.post("/create",async (req,res)=>{
+app.post("/api/newuser",async (req,res)=>{
     let data=new user(req.body)
     let result= await data.save()
     console.log(req.body);    
     res.send(req.body)
 })
 
-app.get("/list",async (req,res)=>{
+app.get("/api/userList",async (req,res)=>{
     let data= await user.find();
     res.send(data);
 })
-app.get("/list/:email/:password", async (req, res) => {
+app.get("/api/userList/:email/:password", async (req, res) => {
     const { email, password } = req.params;
 
     try {
