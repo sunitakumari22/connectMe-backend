@@ -1,0 +1,19 @@
+{
+    "version":2,
+    "builds":[{"src":"./index.js","use":"@vercel/node"}],
+    "routes": [
+        {
+            "src": "/api/newuser",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/api/userList",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/api/userList/(.*)/(.*)",
+            "dest": "/index.js"
+        }
+       
+    ]
+}
