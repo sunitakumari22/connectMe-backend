@@ -13,6 +13,14 @@
         {
             "src": "/api/userList/(.*)/(.*)",
             "dest": "/index.js"
+        },
+        {
+            "src": "/api/newJoineduser",
+            "dest": "/index.js"
+        },
+        {
+            "src": "/api/joinedUserList",
+            "dest": "/index.js"
         }
        
     ]

@@ -3,6 +3,7 @@ const express = require('express');
 require('./config');
 const cors = require('cors');
 const user=require('./users');
+const joinedUser= require('./joinedUser')
 
 
 const app=express();
@@ -23,6 +24,18 @@ app.post("/api/newuser",async (req,res)=>{
 
 app.get("/api/userList",async (req,res)=>{
     let data= await user.find();
+    res.send(data);
+})
+
+app.post("/api/newJoinedUser",async (req,res)=>{
+    let data=new joinedUser(req.body)
+    let result= await data.save()
+    console.log(req.body);    
+    res.send(req.body)
+})
+
+app.get("/api/joinedUserList",async (req,res)=>{
+    let data= await joinedUser.find();
     res.send(data);
 })
 app.get("/api/userList/:email/:password", async (req, res) => {
