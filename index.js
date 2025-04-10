@@ -38,6 +38,24 @@ app.get("/api/joinedUserList",async (req,res)=>{
     let data= await joinedUser.find();
     res.send(data);
 })
+
+
+app.delete("/api/deleteJoinedUserByRoom/:roomID", async (req, res) => {
+    const { roomID } = req.params;
+  
+    try {
+      const result = await joinedUser.deleteOne({ roomID });
+  
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ message: "User with this roomID not found." });
+      }
+  
+      res.status(200).json({ message: "User deleted successfully." });
+    } catch (error) {
+      console.error("Delete error:", error);
+      res.status(500).json({ message: "Server error while deleting user." });
+    }
+  });
 app.get("/api/userList/:email/:password", async (req, res) => {
     const { email, password } = req.params;
 
