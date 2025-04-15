@@ -23,6 +23,10 @@
             "dest": "/index.js"
         },
         {
+            "src": "/api/joinedUserList/(.*)",
+            "dest": "/index.js"
+        },
+        {
             "src": "/api/deleteJoinedUserByRoom/(.*)",
             "dest": "/index.js"
         }

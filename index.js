@@ -39,6 +39,21 @@ app.get("/api/joinedUserList",async (req,res)=>{
     res.send(data);
 })
 
+app.get("/api/joinedUserList/:interest", async (req, res) => {
+    const { interest } = req.params;
+
+    try {
+        let data = await joinedUser.findOne({ interest:interest });
+        if (data) {
+            res.send(data);
+        } else {
+            res.status(404).send({ message: " matching User not found" });
+        }
+    } catch (error) {
+        res.status(500).send({ message: "Internal Server Error", error: error.message });
+    }
+});
+
 
 app.delete("/api/deleteJoinedUserByRoom/:roomID", async (req, res) => {
     const { roomID } = req.params;
