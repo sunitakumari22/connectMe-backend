@@ -43,7 +43,7 @@ app.get("/api/joinedUserList/:interest", async (req, res) => {
     const { interest } = req.params;
 
     try {
-        let data = await joinedUser.findOne({ interest:interest });
+        let data = await joinedUser.find({ interest:interest });
         if (data) {
             res.send(data);
         } else {
